@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Personal site, pinned repositories, blog notes, and contact info.">
+  <title>modoludens</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+      <a class="wordmark" href="#home" aria-label="Home"><span>modo</span>ludens</a>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="#work">Work</a>
+        <a href="#blog">Blog</a>
+        <a href="#contact">Contact</a>
+        <a class="github-link" id="profile-link" href="https://github.com/iamkenos/" target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">&#8599;</span></a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" id="home" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <h1 id="hero-title">IAM<em>KENOS</em></h1>
+          <h2 class="hero-subtitle">I write code to keep <em>code from breaking</em></h2>
+          <p class="hero-lede">Building platforms and workflows that help teams <strong>ship safely and confidently</strong>.</p>
+          <p class="section-kicker">Understand the system · Explore the limits · Uncover the cracks</p>
+          <br/>
+          <br/>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#work">View my work</a>
+            <a class="btn btn-ghost" href="#contact">Get in touch</a>
+          </div>
+        </div>
+        <div class="hero-portrait" aria-hidden="true">
+          <img src="./assets/ludens.svg" alt="">
+        </div>
+      </section>
+
+      <section class="repositories" id="work" aria-labelledby="repositories-title">
+        <div class="section-heading">
+          <p class="section-kicker">Projects</p>
+          <h2 id="repositories-title">GitHub Repositories</h2>
+          <p id="repository-count">Loading from GitHub...</p>
+        </div>
+        <div id="repository-grid" class="repository-grid" aria-live="polite">
+          <div class="loading-state"><span class="loader" aria-hidden="true"></span>...</div>
+        </div>
+      </section>
+
+      <section class="blog" id="blog" aria-labelledby="blog-title">
+        <div class="section-heading">
+          <p class="section-kicker">Musings</p>
+          <h2 id="blog-title">Web Logs</h2>
+          <p id="blog-count">Loading posts...</p>
+        </div>
+        <div id="blog-list" class="blog-list" aria-live="polite">
+          <div class="loading-state"><span class="loader" aria-hidden="true"></span>...</div>
+        </div>
+        <article id="blog-post-view" class="blog-post-view" hidden aria-live="polite"></article>
+      </section>
+
+      <section class="contact" id="contact" aria-labelledby="contact-title">
+        <div class="section-heading">
+          <p class="section-kicker">Contact</p>
+          <h2 id="contact-title">Let's Build Something</h2>
+          <p id="contact-status">⚲ Sydney, Australia · AEST</p>
+        </div>
+        <div id="contact-content" class="contact-content" aria-live="polite">
+          <div class="loading-state"><span class="loader" aria-hidden="true"></span>...</div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span></span>
+      <span></span>
+      <span id="footer-year"></span>
+    </footer>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
