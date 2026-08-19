@@ -19,7 +19,7 @@ function renderRepositories(repositories) {
   repositoryGrid.innerHTML = repositories.map((repo, index) => `
     <a class="repo-card" href="${repo.html_url}" target="_blank" rel="noreferrer" style="animation-delay: ${index * 70}ms">
       <div>
-        <div class="repo-top"><span class="repo-index">0${index + 1}</span><span class="repo-arrow" aria-hidden="true">&#8599;</span></div>
+        <div class="repo-top"><span class="repo-index">0${index + 1}</span><span class="repo-arrow" aria-hidden="true">&#8599;&#65038;</span></div>
         <h3 class="repo-name">${repo.name}</h3>
         <p class="repo-description">${repo.description || "A project from the workshop."}</p>
       </div>
@@ -164,7 +164,7 @@ async function loadBlogPosts() {
             <div class="blog-summary">${renderMarkdown(excerpt)}</div>
             ${tags.length ? `<div class="blog-tags">${tags.join(" &middot; ")}</div>` : ""}
           </span>
-          <span class="blog-arrow" aria-hidden="true">&#8599;</span>
+          <span class="blog-arrow" aria-hidden="true">&#8599;&#65038;</span>
         </a>
       `;
     }).join("");
