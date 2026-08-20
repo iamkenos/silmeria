@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="15 30 120 100" width="100%" height="100%"> -->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="20 15 120 110" width="100%" height="100%">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="10 25 230 135" width="100%" height="100%">
   <style>
-    @keyframes shard-settle-a { from { transform: translate(-5px, -5px); } to { transform: translate(0, 0); } }
+    <!-- @keyframes shard-settle-a { from { transform: translate(-5px, -5px); } to { transform: translate(0, 0); } }
     @keyframes shard-settle-b { from { transform: translate(5px, 5px); } to { transform: translate(0, 0); } }
     .shard-a { animation: shard-settle-a 1.2s ease-out forwards; }
-    .shard-b { animation: shard-settle-b 1.2s ease-out forwards; }
-    @keyframes shard-settle-c { from { transform: translate(-0px, -5px); } to { transform: translate(0, 0); } }
-    @keyframes shard-settle-d { from { transform: translate(0px, 5px); } to { transform: translate(0, 0); } }
-    .shard-c { animation: shard-settle-c 1.2s ease-out forwards; }
-    .shard-d { animation: shard-settle-d 1.2s ease-out forwards; }
+    .shard-b { animation: shard-settle-b 1.2s ease-out forwards; } -->
+    @keyframes shard-settle-a { from { transform: translate(0px, -10px); } to { transform: translate(0, 0); } }
+    @keyframes shard-settle-b { from { transform: translate(0px, 10px); } to { transform: translate(0, 0); } }
+    .shard-a { animation: shard-settle-a 1.5s ease-out forwards; }
+    .shard-b { animation: shard-settle-b 1.5s ease-out forwards; }
   </style>
   <!-- <g transform="scale(1.5) rotate(90 50 50)"> -->
-  <g transform="scale(1.5) rotate(45 50 50)">
+  <g transform="scale(2.5) rotate(0 50 50)">
     <!-- <polygon class="shard-a" points="30.0,22.0 70.0,42.0 45.0,52.0" fill="#88C0D0" />
     <polygon class="shard-b" points="70.0,80.0 30.0,60.0 55.0,50.0" fill="#D9DDE9" /> -->
-    <polygon class="shard-c" points="10.0,53.0 50.0,13.0 90.0,53.0 80.0,53.0 50.0,27.0 20.0,53.0" fill="#D9DDE9" />
-    <polygon class="shard-d" points="20.0,60.0 50.0,30.0 80.0,60.0 70.0,60.0 50.0,44.0 30.0,60.0" fill="#88C0D0" />
+    <polygon class="shard-a" points="10.0,53.0 50.0,13.0 90.0,53.0 80.0,53.0 50.0,27.0 20.0,53.0" fill="#D9DDE9" />
+    <polygon class="shard-b" points="20.0,60.0 50.0,30.0 80.0,60.0 70.0,60.0 50.0,44.0 30.0,60.0" fill="#88C0D0" />
   </g>
 </svg>
