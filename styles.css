@@ -81,13 +81,15 @@ a { color: inherit; }
 .blog-list { display: grid; gap: 14px; }
 .blog-list[hidden] { display: none; }
 .blog-post { padding: 26px; background: var(--surface); border: 1px solid var(--line); border-radius: 6px; text-decoration: none; display: grid; grid-template-columns: auto 1fr auto; gap: 22px; align-items: start; transition: border-color .2s ease, transform .2s ease; }
-.blog-post:hover, .blog-post:focus-visible { border-color: var(--accent); transform: translateX(4px); outline: none; }
+.blog-post:hover, .blog-post:focus-visible { border-color: var(--accent); outline: none; }
 .blog-date { font: 12px var(--mono); color: var(--accent); white-space: nowrap; padding-top: 3px; }
 .blog-title { margin: 0 0 8px; font-size: 19px; letter-spacing: -.01em; color: var(--ink); }
 .blog-summary { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.55; }
 .blog-summary p { margin: 0; }
 .blog-tags { color: var(--muted-dim); font: 11px var(--mono); text-transform: uppercase; margin-top: 10px; }
 .blog-arrow { color: var(--accent); font-size: 20px; padding-top: 3px; }
+.blog-view-all { display: block; text-align: center; padding: 14px; color: var(--accent); text-decoration: none; font: 12px var(--mono); text-transform: uppercase; letter-spacing: .06em; border: 1px solid var(--line); border-radius: 6px; }
+.blog-view-all:hover, .blog-view-all:focus-visible { text-decoration: underline; border-color: var(--accent); }
 
 .blog-post-view { padding: 34px clamp(24px, 5vw, 48px); background: var(--surface); border: 1px solid var(--line); border-radius: 6px; }
 .blog-post-view .blog-date { display: block; margin-bottom: 14px; }
@@ -107,6 +109,15 @@ body.reading-mode .contact {
   display: none;
 }
 body.reading-mode .blog { padding-top: 40px; }
+
+/* Blog focus mode: the full post list takes over the page, other sections are hidden. */
+body.blog-focus .hero,
+body.blog-focus #work,
+body.blog-focus .contact {
+  display: none;
+}
+body.blog-focus .blog { padding-top: 40px; }
+body.blog-focus .blog .section-heading { border-top: none; }
 
 .contact { padding-bottom: 90px; }
 .contact-content { display: grid; grid-template-columns: 1.3fr 1fr; }

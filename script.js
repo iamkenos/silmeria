@@ -1,4 +1,3 @@
-// Replace this value with your GitHub username before publishing.
 const GITHUB_USERNAME = "iamkenos";
 const heroContent = document.querySelector("#hero-content");
 const repositoryGrid = document.querySelector("#repository-grid");
@@ -10,6 +9,7 @@ const blogPostView = document.querySelector("#blog-post-view");
 const contactContent = document.querySelector("#contact-content");
 const contactStatus = document.querySelector("#contact-status");
 
+const LATEST_POSTS_COUNT = 5;
 let cachedPosts = [];
 
 document.querySelector("#footer-year").textContent = new Date().getFullYear();
@@ -104,20 +104,13 @@ function renderBlogPostView(slug) {
   `;
   blogList.hidden = true;
   blogPostView.hidden = false;
+  document.body.classList.remove("blog-focus");
   document.body.classList.add("reading-mode");
   blogPostView.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
-function renderBlog({ posts = [], error = false }) {
-  if (error) {
-    blogCount.textContent = "Could not load posts";
-    blogList.innerHTML = `<div class="error-state">Add posts to <strong>content/blog.md</strong> to populate this section.</div>`;
-    return;
-  }
-
-  cachedPosts = posts;
-  blogCount.textContent = `${posts.length} posts`;
-  blogList.innerHTML = posts
+function buildBlogPostsMarkup(posts) {
+  return posts
     .map((post) => {
       const tags = (post.data.tags || "")
         .split(",")
@@ -146,6 +139,33 @@ function renderBlog({ posts = [], error = false }) {
     `;
     })
     .join("");
+}
+
+function renderBlogList(showAll) {
+  const posts = showAll
+    ? cachedPosts
+    : cachedPosts.slice(0, LATEST_POSTS_COUNT);
+  const postsMarkup = buildBlogPostsMarkup(posts);
+  const hasMore = cachedPosts.length > LATEST_POSTS_COUNT;
+
+  if (showAll) {
+    blogList.innerHTML = `<a class="blog-back" href="#blog">&#8592; Latest posts</a>${postsMarkup}`;
+  } else {
+    blogList.innerHTML = hasMore
+      ? `${postsMarkup}<a class="blog-view-all" href="#blog/all">View all posts &#8599;&#65038;</a>`
+      : postsMarkup;
+  }
+}
+
+function renderBlog({ posts = [], error = false }) {
+  if (error) {
+    blogCount.textContent = "Could not load posts";
+    blogList.innerHTML = `<div class="error-state">Add posts to <strong>content/blog.md</strong> to populate this section.</div>`;
+    return;
+  }
+
+  cachedPosts = posts;
+  blogCount.textContent = `${posts.length} posts`;
   handleBlogRoute();
 }
 
@@ -341,17 +361,21 @@ async function loadBlogPosts() {
   }
 }
 
-function showBlogList() {
+function showBlogList(showAll) {
   blogPostView.hidden = true;
   blogPostView.innerHTML = "";
   blogList.hidden = false;
   document.body.classList.remove("reading-mode");
+  document.body.classList.toggle("blog-focus", showAll);
+  renderBlogList(showAll);
 }
 
 function handleBlogRoute() {
-  const match = window.location.hash.match(/^#blog\/(.+)$/);
+  const hash = window.location.hash;
+  if (hash === "#blog/all") return showBlogList(true);
+  const match = hash.match(/^#blog\/(.+)$/);
   if (match) renderBlogPostView(decodeURIComponent(match[1]));
-  else showBlogList();
+  else showBlogList(false);
 }
 
 function formatNumber(value) {
