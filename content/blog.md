@@ -26,7 +26,7 @@ tags: business, process, automation
 When my mates and I thought of running a chips franchise, we thought it was just a matter of buying stock and selling flavoured fries. We soon discovered the challenges of daily operations, and as a software professional who despised repetitive admin tasks such as accounting, inventory management, payroll, and the like, turning back office overhead into code was a no-brainer.
 
 After a couple of years in operation, we made the decision to sell the franchise to cut losses and prepare for new chapters. While closing a business is always a learning experience,
-looking at the journey through an engineering lens give me even better insights into how software interacts with real-world operations.
+looking at the journey through an engineering lens has given me better insights into how software interacts with real-world operations.
 
 **Automating the Back Office**
 
