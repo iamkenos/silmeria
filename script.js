@@ -35,7 +35,11 @@ function renderHero(hero) {
   }
 
   const { data } = hero;
+  const eyebrow = data.eyebrow
+    ? `<p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span>${data.eyebrow}</p>`
+    : "";
   heroContent.innerHTML = `
+    ${eyebrow}
     <h1 id="hero-title">${renderEmphasis(data.title, data["title-em"])}</h1>
     <h2 class="hero-subtitle">${renderEmphasis(data.subtitle, data["subtitle-em"])}</h2>
     <p class="hero-lede">${renderEmphasis(data.lede, data["lede-em"])}</p>

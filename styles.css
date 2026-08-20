@@ -43,7 +43,7 @@ a { color: inherit; }
 
 .eyebrow, .section-kicker, .site-footer { font: 11px var(--mono); letter-spacing: .08em; text-transform: uppercase; }
 .eyebrow { display: flex; align-items: center; gap: 10px; margin: 0 0 26px; color: var(--muted); }
-.eyebrow-dot { width: 8px; height: 8px; background: var(--nord14); display: inline-block; border-radius: 50%; box-shadow: 0 0 0 4px rgba(163, 190, 140, 0.16); }
+.eyebrow-dot { width: 8px; height: 8px; background: var(--nord14); display: inline-block; border-radius: 50%; box-shadow: 0 0 0 4px var(--nord3); }
 
 .hero { display: grid; grid-template-columns: 1.1fr .9fr; gap: 16px; align-items: center; padding: clamp(56px, 10vw, 108px) 0 96px; }
 .hero-copy h1 { font-size: clamp(2.6rem, 5.4vw, 4.4rem); line-height: 1.05; letter-spacing: -.03em; margin: 0; font-weight: 600; color: var(--ink); }

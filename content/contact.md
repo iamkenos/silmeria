@@ -1,7 +1,7 @@
 ---
 heading: Let's build something
 email: alexis.matunog@gmail.com
-availability: Open to freelance & collaborate
+availability: Feel free to reach out
 location: ⚲ Sydney, Australia · AEST
 links:
   LinkedIn: https://www.linkedin.com/in/alex-matunog/
