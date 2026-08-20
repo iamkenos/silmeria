@@ -1,0 +1,10 @@
+---
+pinned:
+  - fragile
+  - hornet
+  - iris
+  - kyoko
+  - nanami
+  - peach
+---
+

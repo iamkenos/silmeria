@@ -26,12 +26,9 @@
     <main>
       <section class="hero" id="home" aria-labelledby="hero-title">
         <div class="hero-copy">
-          <h1 id="hero-title">IAM<em>KENOS</em></h1>
-          <h2 class="hero-subtitle">I write code to keep <em>code from breaking</em></h2>
-          <p class="hero-lede">Building platforms and workflows that help teams <strong>ship safely and confidently</strong>.</p>
-          <p class="section-kicker">Understand the system · Explore the limits · Uncover the cracks</p>
-          <br/>
-          <br/>
+          <div id="hero-content" aria-live="polite">
+            <div class="loading-state"><span class="loader" aria-hidden="true"></span>...</div>
+          </div>
           <div class="hero-actions">
             <a class="btn btn-primary" href="#work">View my work</a>
             <a class="btn btn-ghost" href="#contact">Get in touch</a>
@@ -69,7 +66,7 @@
         <div class="section-heading">
           <p class="section-kicker">Contact</p>
           <h2 id="contact-title">Let's Build Something</h2>
-          <p id="contact-status">⚲ Sydney, Australia · AEST</p>
+          <p id="contact-status"></p>
         </div>
         <div id="contact-content" class="contact-content" aria-live="polite">
           <div class="loading-state"><span class="loader" aria-hidden="true"></span>...</div>
