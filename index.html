@@ -10,6 +10,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100..700&display=swap" rel="stylesheet">
+  <script>
+    if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light";
+  </script>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -20,7 +23,8 @@
         <a href="#work">Work</a>
         <a href="#blog">Blog</a>
         <a href="#contact">Contact</a>
-        <a class="github-link" id="profile-link" href="https://github.com/iamkenos/" target="_blank" rel="noreferrer">GitHub<img class="external-arrow" src="./assets/chevron.svg" alt="" aria-hidden="true"></a>
+        <a class="github-link" id="profile-link" href="https://github.com/iamkenos/" target="_blank" rel="noreferrer">GitHub<span class="external-arrow chevron-icon" aria-hidden="true"></span></a>
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to light theme" title="Switch to light theme"><span aria-hidden="true">&#9788;</span></button>
       </nav>
     </header>
 
@@ -36,7 +40,7 @@
           </div>
         </div>
         <div class="hero-portrait" aria-hidden="true">
-          <img src="./assets/favicon.svg" alt="">
+          <object id="hero-mark" type="image/svg+xml" data="./assets/favicon.svg" tabindex="-1"></object>
         </div>
       </section>
 

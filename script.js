@@ -8,12 +8,33 @@ const blogCount = document.querySelector("#blog-count");
 const blogPostView = document.querySelector("#blog-post-view");
 const contactContent = document.querySelector("#contact-content");
 const contactAvailability = document.querySelector("#contact-availability");
+const themeToggle = document.querySelector("#theme-toggle");
+const heroMark = document.querySelector("#hero-mark");
 
 const LATEST_POSTS_COUNT = 5;
 let cachedPosts = [];
 
 document.querySelector("#footer-year").textContent = new Date().getFullYear();
 window.addEventListener("hashchange", handleBlogRoute);
+
+function setTheme(theme) {
+  const isLight = theme === "light";
+  document.documentElement.dataset.theme = isLight ? "light" : "dark";
+  localStorage.setItem("theme", isLight ? "light" : "dark");
+  if (heroMark.contentDocument) {
+    heroMark.contentDocument.documentElement.dataset.theme = isLight ? "light" : "dark";
+  }
+  themeToggle.setAttribute("aria-label", `Switch to ${isLight ? "dark" : "light"} theme`);
+  themeToggle.title = themeToggle.getAttribute("aria-label");
+  themeToggle.innerHTML = `<span aria-hidden="true">${isLight ? "&#9790;" : "&#9788;"}</span>`;
+}
+
+setTheme(document.documentElement.dataset.theme);
+
+heroMark.addEventListener("load", () => setTheme(document.documentElement.dataset.theme));
+themeToggle.addEventListener("click", () => {
+  setTheme(document.documentElement.dataset.theme === "light" ? "dark" : "light");
+});
 
 function renderMarkdown(markdown) {
   return typeof marked !== "undefined" ? marked.parse(markdown) : markdown;
@@ -68,7 +89,7 @@ function renderRepositories({
       (repo, index) => `
     <a class="repo-card" href="${repo.html_url}" target="_blank" rel="noreferrer" style="animation-delay: ${index * 70}ms">
       <div>
-        <div class="repo-top"><span class="repo-index">0${index + 1}</span><img class="repo-arrow" src="./assets/chevron.svg" alt="" aria-hidden="true"></div>
+        <div class="repo-top"><span class="repo-index">0${index + 1}</span><span class="repo-arrow chevron-icon" aria-hidden="true"></span></div>
         <h3 class="repo-name">${repo.name}</h3>
         <p class="repo-description">${repo.description || "A project from the workshop."}</p>
       </div>
@@ -100,7 +121,7 @@ function renderBlogPostView(slug) {
     : "";
 
   blogPostView.innerHTML = `
-    <a class="blog-back" href="#blog"><img class="back-arrow" src="./assets/chevron.svg" alt="" aria-hidden="true">All posts</a>
+    <a class="blog-back" href="#blog/all"><span class="back-arrow chevron-icon" aria-hidden="true"></span>All posts</a>
     <span class="blog-date">${date}</span>
     <h3 class="blog-title">${post.data.title}</h3>
     ${tags.length ? `<div class="blog-tags">${tags.join(" &middot; ")}</div>` : ""}
@@ -138,7 +159,7 @@ function buildBlogPostsMarkup(posts) {
           <div class="blog-summary">${renderMarkdown(excerpt)}</div>
           ${tags.length ? `<div class="blog-tags">${tags.join(" &middot; ")}</div>` : ""}
         </span>
-        <img class="blog-arrow" src="./assets/chevron.svg" alt="" aria-hidden="true">
+        <span class="blog-arrow chevron-icon" aria-hidden="true"></span>
       </a>
     `;
     })
@@ -153,10 +174,10 @@ function renderBlogList(showAll) {
   const hasMore = cachedPosts.length > LATEST_POSTS_COUNT;
 
   if (showAll) {
-    blogList.innerHTML = `<a class="blog-back" href="#blog"><img class="back-arrow" src="./assets/chevron.svg" alt="" aria-hidden="true">Latest posts</a>${postsMarkup}`;
+    blogList.innerHTML = `<a class="blog-back" href="#blog"><span class="back-arrow chevron-icon" aria-hidden="true"></span>Latest posts</a>${postsMarkup}`;
   } else {
     blogList.innerHTML = hasMore
-      ? `${postsMarkup}<a class="blog-view-all" href="#blog/all">View all posts<img class="blog-view-all-arrow" src="./assets/chevron.svg" alt="" aria-hidden="true"></a>`
+      ? `${postsMarkup}<a class="blog-view-all" href="#blog/all">View all posts<span class="blog-view-all-arrow chevron-icon" aria-hidden="true"></span></a>`
       : postsMarkup;
   }
 }
