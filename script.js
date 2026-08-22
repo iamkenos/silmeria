@@ -68,7 +68,7 @@ function renderRepositories({
       (repo, index) => `
     <a class="repo-card" href="${repo.html_url}" target="_blank" rel="noreferrer" style="animation-delay: ${index * 70}ms">
       <div>
-        <div class="repo-top"><span class="repo-index">0${index + 1}</span><span class="repo-arrow" aria-hidden="true">&#8599;&#65038;</span></div>
+        <div class="repo-top"><span class="repo-index">0${index + 1}</span><img class="repo-arrow" src="./assets/chevron.svg" alt="" aria-hidden="true"></div>
         <h3 class="repo-name">${repo.name}</h3>
         <p class="repo-description">${repo.description || "A project from the workshop."}</p>
       </div>
@@ -100,7 +100,7 @@ function renderBlogPostView(slug) {
     : "";
 
   blogPostView.innerHTML = `
-    <a class="blog-back" href="#blog">&#8592; All posts</a>
+    <a class="blog-back" href="#blog"><img class="back-arrow" src="./assets/chevron.svg" alt="" aria-hidden="true">All posts</a>
     <span class="blog-date">${date}</span>
     <h3 class="blog-title">${post.data.title}</h3>
     ${tags.length ? `<div class="blog-tags">${tags.join(" &middot; ")}</div>` : ""}
@@ -138,7 +138,7 @@ function buildBlogPostsMarkup(posts) {
           <div class="blog-summary">${renderMarkdown(excerpt)}</div>
           ${tags.length ? `<div class="blog-tags">${tags.join(" &middot; ")}</div>` : ""}
         </span>
-        <span class="blog-arrow" aria-hidden="true">&#8599;&#65038;</span>
+        <img class="blog-arrow" src="./assets/chevron.svg" alt="" aria-hidden="true">
       </a>
     `;
     })
@@ -153,10 +153,10 @@ function renderBlogList(showAll) {
   const hasMore = cachedPosts.length > LATEST_POSTS_COUNT;
 
   if (showAll) {
-    blogList.innerHTML = `<a class="blog-back" href="#blog">&#8592; Latest posts</a>${postsMarkup}`;
+    blogList.innerHTML = `<a class="blog-back" href="#blog"><img class="back-arrow" src="./assets/chevron.svg" alt="" aria-hidden="true">Latest posts</a>${postsMarkup}`;
   } else {
     blogList.innerHTML = hasMore
-      ? `${postsMarkup}<a class="blog-view-all" href="#blog/all">View all posts &#8599;&#65038;</a>`
+      ? `${postsMarkup}<a class="blog-view-all" href="#blog/all">View all posts<img class="blog-view-all-arrow" src="./assets/chevron.svg" alt="" aria-hidden="true"></a>`
       : postsMarkup;
   }
 }

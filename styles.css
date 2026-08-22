@@ -39,12 +39,13 @@ a { color: inherit; }
 .site-nav { display: flex; align-items: center; gap: 28px; }
 .site-nav a { font: 12px var(--mono); text-decoration: none; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); transition: color .2s ease; }
 .site-nav a:hover, .site-nav a:focus-visible { color: var(--accent); }
-.github-link span { color: var(--accent); font-size: 15px; margin-left: 4px; }
+.external-arrow { width: 9px; height: 9px; display: inline-block; padding-left: 2.5px; vertical-align: 2px; }
+.back-arrow { width: 9px; height: 9px; display: inline-block; padding-right: 2px; margin-right: 1px; vertical-align: 0.25px; transform: rotate(-135deg); }
 
 .eyebrow, .section-kicker, .site-footer { font: 11px var(--mono); letter-spacing: .08em; text-transform: uppercase; }
 .eyebrow { display: flex; align-items: center; gap: 10px; margin: 0 0 26px; color: var(--muted); }
 .eyebrow-dot { width: 8px; height: 8px; background: var(--nord14); display: inline-block; border-radius: 50%; margin-left: 4px; position: relative; }
-.eyebrow-dot::before { content: ""; position: absolute; inset: -4px; border-radius: 25%; background: radial-gradient(circle, rgba(163, 190, 140, .5) 0%, rgba(143, 188, 187, .24) 35%, transparent 75%); z-index: -1; }
+.eyebrow-dot::before { content: ""; position: absolute; inset: -4px; border-radius: 25%; background: radial-gradient(circle, color-mix(in srgb, var(--nord14) 50%, transparent) 0%, color-mix(in srgb, var(--nord7) 25%, transparent) 40%, transparent 75%); z-index: -1; }
 
 .hero { display: grid; grid-template-columns: 1.1fr .9fr; gap: 16px; align-items: center; padding: clamp(56px, 10vw, 108px) 0 96px; }
 .hero-copy h1 { font-size: clamp(2.6rem, 5.4vw, 4.4rem); line-height: 1.05; letter-spacing: -.03em; margin: 0; font-weight: 600; color: var(--ink); }
@@ -73,7 +74,7 @@ a { color: inherit; }
 .repo-card:hover, .repo-card:focus-visible { transform: translateY(-4px); border-color: var(--accent); outline: none; }
 .repo-top { display: flex; justify-content: space-between; gap: 16px; }
 .repo-index { color: var(--accent); font: 12px var(--mono); }
-.repo-arrow { color: var(--accent); font-family: var(--display); font-size: 20px; line-height: .7; }
+.repo-arrow { width: 20px; height: 20px; display: block; }
 .repo-name { margin: 30px 0 10px; font-size: clamp(1.25rem, 2.4vw, 1.6rem); letter-spacing: -.02em; line-height: 1.2; overflow-wrap: anywhere; color: var(--ink); }
 .repo-description { max-width: 430px; color: var(--muted); font-size: 14px; line-height: 1.5; margin: 0; }
 .repo-meta { display: flex; gap: 16px; flex-wrap: wrap; color: var(--muted); font: 11px var(--mono); text-transform: uppercase; margin-top: 24px; }
@@ -88,9 +89,10 @@ a { color: inherit; }
 .blog-summary { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.55; }
 .blog-summary p { margin: 0; }
 .blog-tags { color: var(--muted-dim); font: 11px var(--mono); text-transform: uppercase; margin-top: 10px; }
-.blog-arrow { color: var(--accent); font-size: 20px; padding-top: 3px; }
+.blog-arrow { width: 20px; height: 20px; display: block; padding-top: 3px; }
 .blog-view-all { display: block; text-align: center; padding: 14px; color: var(--accent); text-decoration: none; font: 12px var(--mono); text-transform: uppercase; letter-spacing: .06em; border: 1px solid var(--line); border-radius: 6px; }
 .blog-view-all:hover, .blog-view-all:focus-visible { text-decoration: underline; border-color: var(--accent); }
+.blog-view-all-arrow { width: 9px; height: 9px; display: inline-block; padding-left: 2.5px; vertical-align: 2px; }
 
 .blog-post-view { padding: 34px clamp(24px, 5vw, 48px); background: var(--surface); border: 1px solid var(--line); border-radius: 6px; }
 .blog-post-view .blog-date { display: block; margin-bottom: 14px; }

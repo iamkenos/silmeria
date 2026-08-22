@@ -19,6 +19,132 @@ It was one thing doing it with a team on a professional setting, but it was anot
 everything with just myself and a cheerleader. I learned a lot during this side quest but the most rewarding part was seeing how much she loves using and looking at the new site.
 +++
 ---
+---
+title: Happy E, Happy Me: Replatforming E's Blog
+date: 2026-08-19
+tags: sidequests, react, strapi
+---
+The Missus has been blogging on WordPress for years, and it was finally time to give it a makeover.
+The goal was simple: Keep every existing post and image intact, but end up with a design that reflected her as a writer.
+
+I had worked with content management systems before and I was keen to explore one of the modern UI libraries in the wild so we got to work after some ideation and brainstorming.
+
+The stack I chose was a React front-end paired with a self-hosted headless Strapi instance for content. The first commit was around mid 2024 and I was hoping to get the site up and running before her birthday in October.
+
+We both enjoyed imagining new components to add and bringing them to life. After nearly three months, the site was live at [dandelionwishing.com](https://www.dandelionwishing.com).
+
+She ended up proofreading and manually migrating each post because silly old me didn't consider content migration as part
+of the replatform `:E`. But hey, chalk it up to experience eh? 
+
+It was one thing doing it with a team on a professional setting, but it was another thing provisioning and setting up
+everything with just myself and a cheerleader. I learned a lot during this side quest but the most rewarding part was seeing how much she loves using and looking at the new site.
++++
+---
+---
+title: Happy E, Happy Me: Replatforming E's Blog
+date: 2026-08-19
+tags: sidequests, react, strapi
+---
+The Missus has been blogging on WordPress for years, and it was finally time to give it a makeover.
+The goal was simple: Keep every existing post and image intact, but end up with a design that reflected her as a writer.
+
+I had worked with content management systems before and I was keen to explore one of the modern UI libraries in the wild so we got to work after some ideation and brainstorming.
+
+The stack I chose was a React front-end paired with a self-hosted headless Strapi instance for content. The first commit was around mid 2024 and I was hoping to get the site up and running before her birthday in October.
+
+We both enjoyed imagining new components to add and bringing them to life. After nearly three months, the site was live at [dandelionwishing.com](https://www.dandelionwishing.com).
+
+She ended up proofreading and manually migrating each post because silly old me didn't consider content migration as part
+of the replatform `:E`. But hey, chalk it up to experience eh? 
+
+It was one thing doing it with a team on a professional setting, but it was another thing provisioning and setting up
+everything with just myself and a cheerleader. I learned a lot during this side quest but the most rewarding part was seeing how much she loves using and looking at the new site.
++++
+---
+---
+title: Happy E, Happy Me: Replatforming E's Blog
+date: 2026-08-19
+tags: sidequests, react, strapi
+---
+The Missus has been blogging on WordPress for years, and it was finally time to give it a makeover.
+The goal was simple: Keep every existing post and image intact, but end up with a design that reflected her as a writer.
+
+I had worked with content management systems before and I was keen to explore one of the modern UI libraries in the wild so we got to work after some ideation and brainstorming.
+
+The stack I chose was a React front-end paired with a self-hosted headless Strapi instance for content. The first commit was around mid 2024 and I was hoping to get the site up and running before her birthday in October.
+
+We both enjoyed imagining new components to add and bringing them to life. After nearly three months, the site was live at [dandelionwishing.com](https://www.dandelionwishing.com).
+
+She ended up proofreading and manually migrating each post because silly old me didn't consider content migration as part
+of the replatform `:E`. But hey, chalk it up to experience eh? 
+
+It was one thing doing it with a team on a professional setting, but it was another thing provisioning and setting up
+everything with just myself and a cheerleader. I learned a lot during this side quest but the most rewarding part was seeing how much she loves using and looking at the new site.
++++
+---
+---
+title: Happy E, Happy Me: Replatforming E's Blog
+date: 2026-08-19
+tags: sidequests, react, strapi
+---
+The Missus has been blogging on WordPress for years, and it was finally time to give it a makeover.
+The goal was simple: Keep every existing post and image intact, but end up with a design that reflected her as a writer.
+
+I had worked with content management systems before and I was keen to explore one of the modern UI libraries in the wild so we got to work after some ideation and brainstorming.
+
+The stack I chose was a React front-end paired with a self-hosted headless Strapi instance for content. The first commit was around mid 2024 and I was hoping to get the site up and running before her birthday in October.
+
+We both enjoyed imagining new components to add and bringing them to life. After nearly three months, the site was live at [dandelionwishing.com](https://www.dandelionwishing.com).
+
+She ended up proofreading and manually migrating each post because silly old me didn't consider content migration as part
+of the replatform `:E`. But hey, chalk it up to experience eh? 
+
+It was one thing doing it with a team on a professional setting, but it was another thing provisioning and setting up
+everything with just myself and a cheerleader. I learned a lot during this side quest but the most rewarding part was seeing how much she loves using and looking at the new site.
++++
+---
+---
+title: Happy E, Happy Me: Replatforming E's Blog
+date: 2026-08-19
+tags: sidequests, react, strapi
+---
+The Missus has been blogging on WordPress for years, and it was finally time to give it a makeover.
+The goal was simple: Keep every existing post and image intact, but end up with a design that reflected her as a writer.
+
+I had worked with content management systems before and I was keen to explore one of the modern UI libraries in the wild so we got to work after some ideation and brainstorming.
+
+The stack I chose was a React front-end paired with a self-hosted headless Strapi instance for content. The first commit was around mid 2024 and I was hoping to get the site up and running before her birthday in October.
+
+We both enjoyed imagining new components to add and bringing them to life. After nearly three months, the site was live at [dandelionwishing.com](https://www.dandelionwishing.com).
+
+She ended up proofreading and manually migrating each post because silly old me didn't consider content migration as part
+of the replatform `:E`. But hey, chalk it up to experience eh? 
+
+It was one thing doing it with a team on a professional setting, but it was another thing provisioning and setting up
+everything with just myself and a cheerleader. I learned a lot during this side quest but the most rewarding part was seeing how much she loves using and looking at the new site.
++++
+---
+---
+title: Happy E, Happy Me: Replatforming E's Blog
+date: 2026-08-19
+tags: sidequests, react, strapi
+---
+The Missus has been blogging on WordPress for years, and it was finally time to give it a makeover.
+The goal was simple: Keep every existing post and image intact, but end up with a design that reflected her as a writer.
+
+I had worked with content management systems before and I was keen to explore one of the modern UI libraries in the wild so we got to work after some ideation and brainstorming.
+
+The stack I chose was a React front-end paired with a self-hosted headless Strapi instance for content. The first commit was around mid 2024 and I was hoping to get the site up and running before her birthday in October.
+
+We both enjoyed imagining new components to add and bringing them to life. After nearly three months, the site was live at [dandelionwishing.com](https://www.dandelionwishing.com).
+
+She ended up proofreading and manually migrating each post because silly old me didn't consider content migration as part
+of the replatform `:E`. But hey, chalk it up to experience eh? 
+
+It was one thing doing it with a team on a professional setting, but it was another thing provisioning and setting up
+everything with just myself and a cheerleader. I learned a lot during this side quest but the most rewarding part was seeing how much she loves using and looking at the new site.
++++
+---
 title: Closing the Till: What Running and Automating a Chips Franchise Has Taught Me
 date: 2026-08-20
 tags: business, process, automation
