@@ -7,7 +7,7 @@ const blogList = document.querySelector("#blog-list");
 const blogCount = document.querySelector("#blog-count");
 const blogPostView = document.querySelector("#blog-post-view");
 const contactContent = document.querySelector("#contact-content");
-const contactStatus = document.querySelector("#contact-status");
+const contactAvailability = document.querySelector("#contact-availability");
 
 const LATEST_POSTS_COUNT = 5;
 let cachedPosts = [];
@@ -36,7 +36,7 @@ function renderHero(hero) {
 
   const { data } = hero;
   const eyebrow = data.eyebrow
-    ? `<p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span>${data.eyebrow}</p>`
+    ? `<p class="eyebrow">${data.eyebrow}</p>`
     : "";
   heroContent.innerHTML = `
     ${eyebrow}
@@ -183,7 +183,7 @@ function renderContact(contact) {
   const links = data.email
     ? [["Email", `mailto:${data.email}`], ...Object.entries(data.links || {})]
     : Object.entries(data.links || {});
-  contactStatus.textContent = data.availability || "";
+  contactAvailability.innerHTML = data.availability ? `<span class="contact-availability-dot" aria-hidden="true"></span>${data.availability}` : "";
   contactContent.innerHTML = `
     <div class="contact-body">${renderMarkdown(body)}</div>
     <ul class="contact-links">
@@ -194,7 +194,7 @@ function renderContact(contact) {
           return `<li><a href="${href}" ${isExternal ? `target="_blank" rel="noreferrer"` : ""}>${label} <span>${isEmail ? data.email : "View"}</span></a></li>`;
         })
         .join("")}
-      ${data.location ? `<li class="contact-meta">${data.location}</li>` : ""}
+      ${data.location ? `<li class="contact-location">${data.location}</li>` : ""}
     </ul>
   `;
 }
