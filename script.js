@@ -12,9 +12,9 @@ const themeToggle = document.querySelector("#theme-toggle");
 const heroMark = document.querySelector("#hero-mark");
 
 const LATEST_POSTS_COUNT = 5;
+const DEFAULT_ERROR_STATE_HTML = `<div class="error-state">D'oh! That's ironic...<br/><br/><strong>Something broke.</strong><br/><br/><em>It works on my machine, I swear. Try again, perhaps?</em></div>`;
 let cachedPosts = [];
 
-document.querySelector("#footer-year").textContent = new Date().getFullYear();
 window.addEventListener("hashchange", handleBlogRoute);
 
 function setTheme(theme) {
@@ -51,7 +51,7 @@ function renderEmphasis(text, emphasized) {
 
 function renderHero(hero) {
   if (hero.error) {
-    heroContent.innerHTML = `<div class="error-state">Add hero content to <strong>content/hero.md</strong>.</div>`;
+    heroContent.innerHTML = DEFAULT_ERROR_STATE_HTML;
     return;
   }
 
@@ -188,7 +188,7 @@ function renderBlogList(showAll) {
 function renderBlog({ posts = [], error = false }) {
   if (error) {
     blogCount.textContent = "Could not load posts";
-    blogList.innerHTML = `<div class="error-state">Add posts to <strong>content/blog.md</strong> to populate this section.</div>`;
+    blogList.innerHTML = DEFAULT_ERROR_STATE_HTML;
     return;
   }
 
@@ -199,7 +199,7 @@ function renderBlog({ posts = [], error = false }) {
 
 function renderContact(contact) {
   if (contact.error) {
-    contactContent.innerHTML = `<div class="error-state">Add your details to <strong>content/contact.md</strong> to populate this section.</div>`;
+    contactContent.innerHTML = DEFAULT_ERROR_STATE_HTML;
     return;
   }
 

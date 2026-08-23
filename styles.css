@@ -66,7 +66,8 @@ a { color: inherit; }
 .hero-copy h1 em { color: var(--accent); font-style: normal; }
 .hero-copy h2 em { color: var(--accent); font-style: normal; }
 .hero-lede { margin: 28px 0 40px; max-width: 460px; color: var(--muted); font-size: 17px; line-height: 1.6; }
-.hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+.hero .section-kicker { font: 11px var(--display); }
+.hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 28px; }
 .btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 22px; font: 12px var(--mono); text-transform: uppercase; letter-spacing: .06em; text-decoration: none; border-radius: 3px; border: 1px solid transparent; transition: transform .2s ease, border-color .2s ease, background .2s ease; }
 .btn-primary { background: var(--accent); color: var(--bg); }
 .btn-primary:hover { transform: translateY(-2px) }
@@ -146,7 +147,8 @@ body.blog-focus .blog .section-heading { border-top: none; }
 .contact-location { color: var(--muted-dim); font: 12px var(--mono); text-transform: uppercase; letter-spacing: .04em; }
 
 .loading-state, .error-state { grid-column: 1 / -1; padding: 40px 0; color: var(--muted); font: 12px var(--mono); }
-.loader { width: 12px; height: 12px; display: inline-block; margin-right: 10px; border: 1px solid var(--line); border-top-color: var(--accent); border-radius: 50%; animation: spin .8s linear infinite; vertical-align: -2px; }
+.loading-state { display: flex; align-items: center; justify-content: center; }
+.loader { width: 12px; height: 12px; display: inline-block; margin-right: 10px; border: 1.5px solid var(--line); border-top-color: var(--accent); border-radius: 50%; animation: spin .75s linear infinite; vertical-align: -2px; }
 .error-state a { color: var(--accent); }
 .site-footer { display: flex; justify-content: space-between; padding: 22px 0 30px; color: var(--muted); border-top: 1px solid var(--line); }
 .footer-mark { color: var(--accent); letter-spacing: 4px; }
@@ -167,6 +169,7 @@ body.blog-focus .blog .section-heading { border-top: none; }
   .site-nav a .external-arrow { vertical-align: 0.55px; }
   .theme-toggle { width: 28px; height: 28px; }
   .hero { padding: 50px 0 60px; }
+  .hero .section-kicker { font: 9.25px var(--display); letter-spacing: .025em; }
   .repository-grid { grid-template-columns: 1fr; }
   .blog-preview-card { grid-template-columns: 1fr; }
   .blog-preview-card .blog-preview-top { display: flex; align-items: center; }
