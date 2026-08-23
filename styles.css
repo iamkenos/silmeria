@@ -68,7 +68,7 @@ a { color: inherit; }
 .hero-lede { margin: 28px 0 40px; max-width: 460px; color: var(--muted); font-size: 17px; line-height: 1.6; }
 .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
 .btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 22px; font: 12px var(--mono); text-transform: uppercase; letter-spacing: .06em; text-decoration: none; border-radius: 3px; border: 1px solid transparent; transition: transform .2s ease, border-color .2s ease, background .2s ease; }
-.btn-primary { background: var(--accent); color: var(--nord0); }
+.btn-primary { background: var(--accent); color: var(--bg); }
 .btn-primary:hover { transform: translateY(-2px) }
 .btn-ghost { border-color: var(--line); color: var(--ink); }
 .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
@@ -121,17 +121,13 @@ a { color: inherit; }
 body.reading-mode .hero,
 body.reading-mode #work,
 body.reading-mode .blog .section-heading,
-body.reading-mode .contact {
-  display: none;
-}
+body.reading-mode .contact { display: none; }
 body.reading-mode .blog { padding-top: 40px; }
 
 /* Blog focus mode: the full post list takes over the page, other sections are hidden. */
 body.blog-focus .hero,
 body.blog-focus #work,
-body.blog-focus .contact {
-  display: none;
-}
+body.blog-focus .contact { display: none; }
 body.blog-focus .blog { padding-top: 40px; }
 body.blog-focus .blog .section-heading { border-top: none; }
 
@@ -168,6 +164,7 @@ body.blog-focus .blog .section-heading { border-top: none; }
   .page-shell { width: min(100% - 32px, 500px); }
   .site-header { padding: 18px 0; flex-wrap: wrap; gap: 12px; }
   .site-nav { gap: 16px; }
+  .site-nav a .external-arrow { vertical-align: 0.55px; }
   .theme-toggle { width: 28px; height: 28px; }
   .hero { padding: 50px 0 60px; }
   .repository-grid { grid-template-columns: 1fr; }
@@ -179,11 +176,12 @@ body.blog-focus .blog .section-heading { border-top: none; }
   .site-footer { flex-wrap: wrap; gap: 8px; font-size: 9px; }
 }
 
-@media (max-width: 649px) {
+@media (max-width: 600px) {
   .site-header { display: flex; flex-direction: column; align-items: center; }
   .wordmark { align-self: center; }
   .site-nav { width: 100%; width: 100%; display: flex; align-items: center; }
   .site-nav a:not(button) { flex: 1 1 0; display: flex; justify-content: center; align-items: center; white-space: nowrap; }
+  .site-nav a .external-arrow { align-self: center; position: relative; top: -0.55px; }
   .site-nav button { margin-left: auto; }
   .theme-toggle { width: 26px; height: 26px; font-size: 14px; }
 }
