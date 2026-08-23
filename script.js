@@ -152,8 +152,11 @@ function buildBlogPostsMarkup(posts) {
       const href = post.data.url || `#blog/${post.slug}`;
       const linkAttrs = post.data.url ? `target="_blank" rel="noreferrer"` : "";
       return `
-      <a class="blog-post" href="${href}" ${linkAttrs}>
-        <span class="blog-date">${date}</span>
+      <a class="blog-preview-card" href="${href}" ${linkAttrs}>
+        <div class="blog-preview-top">
+          <span class="blog-date">${date}</span>
+          <span class="blog-arrow chevron-icon sm-up" aria-hidden="true"></span>
+        </div>
         <span>
           <h3 class="blog-title">${post.data.title}</h3>
           <div class="blog-summary">${renderMarkdown(excerpt)}</div>
