@@ -1,10 +1,10 @@
 ---
 title: IAMKENOS
 title-em: KENOS
-subtitle: Writing code that prevents code from breaking
-subtitle-em: prevents code from breaking
-lede: I build platforms and workflows to help teams ship safely and confidently.
-lede-em: ship safely and confidently
-kicker: Understand the system · Explore the limits · Uncover the cracks
+subtitle: Code that builds quality in code
+subtitle-em: quality in code
+lede: I build platforms and workflows that empower teams ship to fast and safely at scale.
+lede-em: ship fast and safely at scale
+kicker: 
 eyebrow: 
 ---

@@ -5,6 +5,6 @@ email: alexis.matunog@gmail.com
 links:
   LinkedIn: https://www.linkedin.com/in/alex-matunog/
   Stack Overflow: https://stackoverflow.com/users/2285470/iamkenos
-  Resume: https://modoludens.com/assets/resume_matunog-alexis_software-engineer-quality-engineer.pdf
+  Resume: https://cv.modoludens.com/iamkenos/quality-engineer
 location: ⚲ Sydney, Australia · AEST
 ---
