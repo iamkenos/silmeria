@@ -1,4 +1,19 @@
 ---
+title: What's new, Postman?
+date: 2026-09-13
+tags: api, automation, pragmatism
+---
+It's been a long while since I last used Postman for testing API endpoints. Features that used to be free are now hidden behind a paywall so it kinda just stayed at the bottom of the toolbox and moved on. Until recently, when I was assigned to assess how it would fare for a team's API testing needs as part of consulting work. The catch: our users would be test analysts with minimal automation exposure and a strong aversion to high-code solutions. Given my experience with Postman, I approached the task with some skepticism.
+
+After some evaluation, I found that Postman's [Newman](https://github.com/postmanlabs/newman) collection runner can be a genuinely decent solution for specific use cases. It excels when you need to empower non-technical testers, move fast without heavy-lift automation frameworks, and integrate testing into CI/CD pipelines without requiring dedicated automation engineers.
+
+**On Scalability, Future-Proofing, and Developer Experience**
+
+I have a fair bit of concern about growth: what happens when tests become complex, teams expand, or requirements evolve beyond Postman's capabilities? The honest answer is that Postman has limits, specially as a proper IDE. However, what makes it pragmatic is that these limits emerge gradually, not as a surprise. If your test suite outgrows Postman's scripting capabilities or you need to migrate to a more sophisticated framework down the line, you're not starting from scratch—you have a well-documented collection that serves as both specification and baseline. For teams just starting their testing journey, Postman gets you moving while leaving room to graduate to more specialized tools when the appetite for future-proofing genuinely justifies the investment.
+
+The appeal isn't sophistication; it's pragmatism. Sometimes the best tool isn't the most complex one, it's the one that solves your actual problem while meeting your team where they are.
++++
+---
 title: Happy E, Happy Me: Replatforming E's Blog
 date: 2026-08-19
 tags: sidequests, react, strapi
