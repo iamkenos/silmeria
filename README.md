@@ -1,12 +1,21 @@
 # Personal site
 
-A static personal site with a hero, pinned GitHub repositories, a blog list, and a contact section. Colors follow the [Nord palette](https://www.nordtheme.com). No build step, no framework.
+A static personal site with a hero, featured GitHub repositories and named projects, a blog list, and a contact section. Colors follow the [Nord palette](https://www.nordtheme.com). No build step, no framework.
 
 ## Customize
 
 1. Open `script.js` and replace `YOUR_GITHUB_USERNAME` with your GitHub username. This section pulls your public repositories live from the GitHub REST API.
-   - The GitHub REST API has no public, unauthenticated way to read your actual "pinned" repositories (that requires an authenticated GraphQL call, which would expose a token in client-side code on a public site). Instead, `content/pinned.json` lists the repo names you've pinned on your profile; the script fetches your repos, then filters and orders them to match this list.
-   - Update `content/pinned.json` whenever you change your pinned repositories on GitHub. If the file is empty or missing, the section falls back to your top starred/updated repositories.
+   - The GitHub REST API has no public, unauthenticated way to read your actual pinned repositories (that requires an authenticated GraphQL call, which would expose a token in client-side code on a public site). Instead, `content/projects.md` lists repository names under `github`; the script fetches your repos, then filters and orders them to match this list.
+   - Update `content/projects.md` whenever you change your pinned repositories or add a named project under `others`. If the GitHub list is empty or missing, the section falls back to your top starred/updated repositories.
+   - Named projects use `name`, `url`, optional `description`, and optional `language` fields under `others`. If `description` is omitted, the site tries to read the linked page's SEO description; this only works when that site allows cross-origin browser requests.
+
+   ```yaml
+   others:
+     - name: My Project
+       url: https://example.com
+       description: A short project summary.
+       language: TypeScript
+   ```
 2. Edit `index.html` for the hero placeholder text, name, and image (an inline SVG placeholder is used so no external image is required).
 3. Edit content in Markdown, no HTML required:
    - `content/blog.md`: one post per block, separated by a line containing only `+++`. Each block starts with `---` frontmatter (`title`, `date`, `tags`, `url`) followed by a short Markdown summary.

@@ -1,10 +1,10 @@
 ---
+eyebrow: modoludens · A state of play
 title: IAMKENOS
 title-em: KENOS
-subtitle: Code that builds quality in code
-subtitle-em: quality in code
-lede: I build platforms and workflows that empower teams ship to fast and safely at scale.
-lede-em: ship fast and safely at scale
-kicker: 
-eyebrow: 
+subtitle: I build and play with software.\nI make sure it works.
+subtitle-em: I make sure it works
+lede: I'm a Sydney-based software engineer working across web applications, developer tooling, and test & process automation.\n\nI work primarily with AI agents, Node.js, and Python – Building practical solutions, bringing ideas to life, and making software easier to develop, test, and deliver.
+lede-em: AI agents, Node.js, and Python
+kicker:
 ---

@@ -1,7 +1,7 @@
 const GITHUB_USERNAME = "iamkenos";
 const heroContent = document.querySelector("#hero-content");
-const repositoryGrid = document.querySelector("#repository-grid");
-const repositoryCount = document.querySelector("#repository-count");
+const projectsGrid = document.querySelector("#projects-grid");
+const projectsCount = document.querySelector("#projects-count");
 const profileLink = document.querySelector("#profile-link");
 const blogList = document.querySelector("#blog-list");
 const blogCount = document.querySelector("#blog-count");
@@ -41,12 +41,21 @@ function renderMarkdown(markdown) {
 }
 
 function renderEmphasis(text, emphasized) {
-  const safeText = String(text || "");
+  const safeText = String(text || "").replaceAll("\\n", "<br/>");
   const safeEmphasis = String(emphasized || "");
   if (!safeEmphasis) return safeText;
   const emphasisStart = safeText.indexOf(safeEmphasis);
   if (emphasisStart === -1) return safeText;
   return `${safeText.slice(0, emphasisStart)}<em>${safeEmphasis}</em>${safeText.slice(emphasisStart + safeEmphasis.length)}`;
+}
+
+function escapeHtml(value) {
+  return String(value || "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
 }
 
 function renderHero(hero) {
@@ -68,40 +77,66 @@ function renderHero(hero) {
   `;
 }
 
-function renderRepositories({
+function renderPortfolio({
   repositories = [],
+  otherProjects = [],
   error = false,
   waiting = false,
 }) {
-  if (waiting) {
-    repositoryCount.textContent = "Waiting for a username";
-    repositoryGrid.innerHTML = `<div class="error-state">Add your GitHub username in <strong>script.js</strong> to load repositories.</div>`;
-    return;
-  }
-  if (error) {
-    repositoryCount.textContent = "Could not connect";
-    repositoryGrid.innerHTML = `<div class="error-state">Repositories could not be loaded. Visit the <a href="https://github.com/${GITHUB_USERNAME}" target="_blank" rel="noreferrer">GitHub profile</a> instead.</div>`;
-    return;
-  }
-  repositoryCount.textContent = `${repositories.length} featured repositories`;
-  repositoryGrid.innerHTML = repositories
-    .map(
-      (repo, index) => `
-    <a class="repo-card" href="${repo.html_url}" target="_blank" rel="noreferrer" style="animation-delay: ${index * 70}ms">
-      <div>
-        <div class="repo-top"><span class="repo-index">0${index + 1}</span><span class="repo-arrow chevron-icon" aria-hidden="true"></span></div>
-        <h3 class="repo-name">${repo.name}</h3>
-        <p class="repo-description">${repo.description || "A project from the workshop."}</p>
-      </div>
-      <div class="repo-meta">
-        ${repo.language ? `<span class="language">${repo.language}</span>` : ""}
-        <span>&#9733; ${formatNumber(repo.stargazers_count)}</span>
-        ${typeof repo.npmDownloads === "number" ? `<span title="npm downloads, last month">&#8681; ${formatNumber(repo.npmDownloads)}</span>` : ""}
-      </div>
-    </a>
-  `,
-    )
+  const totalCount = repositories.length + otherProjects.length;
+  projectsCount.textContent =
+    totalCount > 0
+      ? `${totalCount} featured projects`
+      : waiting
+        ? "Waiting for a username"
+        : error
+          ? "Could not connect"
+          : "0 featured projects";
+  const githubMessage = waiting
+    ? `Add your GitHub username in <strong>script.js</strong> to load repositories.`
+    : error
+      ? `Repositories could not be loaded. Visit the <a href="https://github.com/${GITHUB_USERNAME}" target="_blank" rel="noreferrer">GitHub profile</a> instead.`
+      : "";
+
+  const cards = [
+    ...repositories.map((repo) => ({ type: "repository", item: repo })),
+    ...otherProjects.map((project) => ({ type: "project", item: project })),
+  ]
+    .map(({ type, item }, index) => {
+      const number = String(index + 1).padStart(2, "0");
+      if (type === "repository") {
+        return `
+          <a class="projects-card" href="${item.html_url}" target="_blank" rel="noreferrer" style="animation-delay: ${index * 70}ms">
+            <div>
+              <div class="projects-top"><span class="projects-index">${number}</span><span class="projects-arrow chevron-icon" aria-hidden="true"></span></div>
+              <h3 class="projects-name">${item.name}</h3>
+              <p class="projects-description">${item.description || "A project from the workshop."}</p>
+            </div>
+            <div class="projects-meta">
+              ${item.language ? `<span class="language">${item.language}</span>` : ""}
+              <span>&#9733; ${formatNumber(item.stargazers_count)}</span>
+              ${typeof item.npmDownloads === "number" ? `<span title="npm downloads, last month">&#8681; ${formatNumber(item.npmDownloads)}</span>` : ""}
+            </div>
+          </a>
+        `;
+      }
+      return `
+        <a class="projects-card" href="${escapeHtml(item.url)}" target="_blank" rel="noreferrer" style="animation-delay: ${index * 70}ms">
+          <div>
+            <div class="projects-top"><span class="projects-index">${number}</span><span class="projects-arrow chevron-icon" aria-hidden="true"></span></div>
+            <h3 class="projects-name">${escapeHtml(item.name)}</h3>
+            <p class="projects-description">${escapeHtml(item.description || "A project from the workshop.")}</p>
+          </div>
+          ${item.language ? `<div class="projects-meta"><span class="language">${escapeHtml(item.language)}</span></div>` : ""}
+        </a>
+      `;
+    })
     .join("");
+
+  projectsGrid.innerHTML = `
+    ${githubMessage ? `<div class="error-state projects-error">${githubMessage}</div>` : ""}
+    ${cards}
+  `;
 }
 
 function renderBlogPostView(slug) {
@@ -252,41 +287,135 @@ async function fetchNpmDownloads(repoName) {
  * The GitHub REST API has no unauthenticated way to read pinned status,
  * so pinned repo names are kept here and matched against the fetched repository list below.
  */
-async function loadPinnedRepositoryNames() {
+async function loadProjectConfig() {
   try {
-    const response = await fetch("content/repositories.md");
-    if (!response.ok) return [];
+    const response = await fetch("content/projects.md");
+    if (!response.ok) return { github: [], others: [] };
     const raw = await response.text();
     const { data } = parseFrontMatter(raw);
-    const names = data.pinned || [];
+    const names = data.github || data.pinned || [];
+    const github = Array.isArray(names) ? names : [];
+    const others = parseOtherProjects(raw);
 
-    return Array.isArray(names) ? names : [];
+    return { github, others };
   } catch (error) {
-    return [];
+    return { github: [], others: [] };
   }
 }
 
+function parseOtherProjects(raw) {
+  const match = raw.trim().match(/^---\s*\n([\s\S]*?)\n---\s*\n?([\s\S]*)$/);
+  if (!match) return [];
+
+  const lines = match[1].split("\n");
+  const projects = [];
+  let inOthers = false;
+  let current = null;
+
+  lines.forEach((line) => {
+    if (/^others:\s*(?:\[\s*\])?\s*$/.test(line.trim())) {
+      inOthers = true;
+      return;
+    }
+    if (inOthers && /^[a-z][\w-]*:\s*/.test(line)) {
+      inOthers = false;
+    }
+    if (!inOthers) return;
+
+    const itemMatch = line.match(/^\s{2}-\s*(.*?)\s*$/);
+    if (itemMatch) {
+      const item = itemMatch[1].replace(/^["']|["']$/g, "");
+      const fieldMatch = item.match(/^(name|url|description|language):\s*(.*?)\s*$/);
+      if (fieldMatch) {
+        current = { [fieldMatch[1]]: fieldMatch[2].replace(/^["']|["']$/g, "") };
+      } else {
+        current = { url: item };
+      }
+      projects.push(current);
+      return;
+    }
+    if (!current) return;
+
+    const fieldMatch = line.match(/^\s{4}(name|description|url|language|meta):\s*(.*?)\s*$/);
+    if (fieldMatch) {
+      const key = fieldMatch[1] === "meta" ? "language" : fieldMatch[1];
+      current[key] = fieldMatch[2].replace(/^["']|["']$/g, "");
+    }
+  });
+
+  return projects
+    .map((project) => {
+      if (!project.url) return null;
+      const candidateUrl = /^[a-z][a-z\d+.-]*:\/\//i.test(project.url)
+        ? project.url
+        : `https://${project.url}`;
+      try {
+        const url = new URL(candidateUrl);
+        if (!["http:", "https:"].includes(url.protocol)) return null;
+        return {
+          ...project,
+          url: url.href,
+          name: project.name || url.hostname.replace(/^www\./, ""),
+        };
+      } catch (error) {
+        return null;
+      }
+    })
+    .filter(Boolean);
+}
+
+async function fetchProjectDescription(url) {
+  try {
+    const response = await fetch(url);
+    if (!response.ok) return "";
+    const html = await response.text();
+    const document = new DOMParser().parseFromString(html, "text/html");
+    const description =
+      document.querySelector('meta[name="description"]')?.content ||
+      document.querySelector('meta[property="og:description"]')?.content ||
+      document.querySelector('meta[name="twitter:description"]')?.content;
+    return description?.trim() || "";
+  } catch (error) {
+    // Cross-origin sites that do not allow browser access fall back to the default card text.
+    return "";
+  }
+}
+
+async function resolveProjectDescriptions(projects) {
+  return Promise.all(
+    projects.map(async (project) => ({
+      ...project,
+      description:
+        project.description || (await fetchProjectDescription(project.url)),
+    })),
+  );
+}
+
 async function loadRepositories() {
+  const projectConfig = await loadProjectConfig();
+  const otherProjectsPromise = resolveProjectDescriptions(projectConfig.others);
+
   if (GITHUB_USERNAME === "YOUR_GITHUB_USERNAME") {
-    renderRepositories({ waiting: true });
+    renderPortfolio({
+      waiting: true,
+      otherProjects: await otherProjectsPromise,
+    });
     return;
   }
 
   profileLink.href = `https://github.com/${GITHUB_USERNAME}`;
   try {
-    const [response, pinnedNames] = await Promise.all([
-      fetch(
-        `https://api.github.com/users/${encodeURIComponent(GITHUB_USERNAME)}/repos?type=owner&sort=updated&per_page=100`,
-      ),
-      loadPinnedRepositoryNames(),
-    ]);
+    const response = await fetch(
+      `https://api.github.com/users/${encodeURIComponent(GITHUB_USERNAME)}/repos?type=owner&sort=updated&per_page=100`,
+    );
+    const otherProjects = await otherProjectsPromise;
     if (!response.ok) throw new Error("GitHub request failed");
     const repositories = await response.json();
 
     let selected;
-    if (pinnedNames.length) {
+    if (projectConfig.github.length) {
       const byName = new Map(repositories.map((repo) => [repo.name, repo]));
-      selected = pinnedNames.map((name) => byName.get(name)).filter(Boolean);
+      selected = projectConfig.github.map((name) => byName.get(name)).filter(Boolean);
     } else {
       repositories.sort(
         (first, second) =>
@@ -303,9 +432,15 @@ async function loadRepositories() {
       repo.npmDownloads = npmDownloads[index];
     });
 
-    renderRepositories({ repositories: selected });
+    renderPortfolio({
+      repositories: selected,
+      otherProjects,
+    });
   } catch (error) {
-    renderRepositories({ error: true });
+    renderPortfolio({
+      error: true,
+      otherProjects: await otherProjectsPromise,
+    });
   }
 }
 
